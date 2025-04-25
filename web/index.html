@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-
 		<title>Cocos Creator | UTS-6182001053</title>
 
 		<meta
@@ -19,7 +18,7 @@
 		<meta name="force-rendering" content="webkit" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-		<!-- Relatif path ke file CSS & favicon -->
+		<!-- CSS & favicon -->
 		<link rel="stylesheet" type="text/css" href="./style.css" />
 		<link rel="icon" href="./favicon.ico" />
 	</head>
@@ -40,6 +39,7 @@
 				></canvas>
 			</div>
 		</div>
+
 		<p class="footer">
 			Created with
 			<a href="https://www.cocos.com/products" title="Cocos Creator"
@@ -50,17 +50,20 @@
 		<!-- Polyfills bundle -->
 		<script src="./src/polyfills.bundle.js" charset="utf-8"></script>
 
-		<!-- SystemJS support -->
+		<!-- SystemJS core -->
 		<script src="./src/system.bundle.js" charset="utf-8"></script>
 
-		<!-- Import map -->
-		<script
-			src="./src/import-map.json"
-			type="systemjs-importmap"
-			charset="utf-8"
-		></script>
+		<!-- Import map (inline JSON, bukan src!) -->
+		<script type="systemjs-importmap">
+			{
+				"imports": {
+					"cc": "./cocos-js/cc.js",
+					"_virtual_cc": "./cocos-js/_virtual_cc-42ccae14.js"
+				}
+			}
+		</script>
 
-		<!-- Main JS -->
+		<!-- Main loader -->
 		<script>
 			System.import("./index.js").catch(function (err) {
 				console.error(err);
